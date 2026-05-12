@@ -39,6 +39,46 @@ const presentations: Presentation[] = [
   },
   {
     id: 2,
+    subtitle: "OXYGLOBAL.TECH",
+    title: "4P Ecosystem Partnership Model",
+    description:
+      "A powerful ecosystem built around People, Platforms, Products, and caPital to support scalable global technology growth.",
+    points: [
+      "People, Platforms, Products, and caPital model",
+      "100+ technical professionals and 6+ technology platforms",
+      "AI, fintech, blockchain, marketplace, and startup ecosystem",
+    ],
+    image:
+      "https://i.ibb.co/RTcv10T9/Chat-GPT-Image-May-12-2026-12-20-44-PM.png",
+    imageAlt: "OXYGLOBAL.TECH 4P Ecosystem preview",
+    buttonText: "View 4P Ecosystem",
+    driveLink:
+      "https://drive.google.com/file/d/19VNXBmd7fB592sFVOxkszamclXPvQJCl/view",
+    embedLink:
+      "https://drive.google.com/file/d/19VNXBmd7fB592sFVOxkszamclXPvQJCl/preview",
+  },
+  {
+    id: 3,
+    subtitle: "OXY BFSAI",
+    title: "Vibe Code & Responsible AI Platform",
+    description:
+      "A regulation-native AI platform for Banking, Financial Services, and Insurance, focused on compliance, governance, and AI application generation.",
+    points: [
+      "FinVibe for banking and InsurVibe for insurance",
+      "RBI and IRDAI compliance-focused AI platform",
+      "Responsible AI pipeline for full-stack application generation",
+    ],
+    image:
+      "https://i.ibb.co/YTdyZrNg/Chat-GPT-Image-May-12-2026-12-26-02-PM.png",
+    imageAlt: "OXY BFSAI presentation preview",
+    buttonText: "View OXY BFSAI",
+    driveLink:
+      "https://drive.google.com/file/d/1jUt2-iqSC5UDCaVCfRbHLhCO4re9keQA/view",
+    embedLink:
+      "https://drive.google.com/file/d/1jUt2-iqSC5UDCaVCfRbHLhCO4re9keQA/preview",
+  },
+  {
+    id: 4,
     subtitle: "AI Leadership Initiative",
     title: "Mission Million AI Cofounders",
     description:
@@ -189,7 +229,6 @@ const PresentationsSection: React.FC = () => {
       <main className="w-full bg-white pt-20 sm:pt-18 lg:pt-20">
         <section className="w-full px-4 py-10 sm:px-6 sm:py-12 md:px-8 lg:px-12 lg:py-16 xl:px-16">
           <div className="mx-auto max-w-7xl">
-            {/* Heading */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -208,12 +247,11 @@ const PresentationsSection: React.FC = () => {
                 variants={fadeUp}
                 className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[#3A3A3A] sm:text-base"
               >
-                Discover our corporate vision and AI cofounder initiative
-                through clean, focused, presentation-led storytelling.
+                Discover our corporate vision, 4P ecosystem, OXY BFSAI platform,
+                and Mission Million AI Cofounders initiative.
               </motion.p>
             </motion.div>
 
-            {/* Presentation blocks */}
             <div className="space-y-16 sm:space-y-20 lg:space-y-24">
               {presentations.map((item, index) => {
                 const reverse = index % 2 === 1;
@@ -226,7 +264,6 @@ const PresentationsSection: React.FC = () => {
                     key={item.id}
                     className="grid items-center gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20"
                   >
-                    {/* Image / PDF Preview Side */}
                     <motion.div
                       initial="hidden"
                       whileInView="visible"
@@ -258,6 +295,9 @@ const PresentationsSection: React.FC = () => {
 
                                   <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 px-4 py-4 sm:px-5 sm:py-5">
                                     <div className="min-w-0">
+                                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80 sm:text-xs">
+                                        {item.subtitle}
+                                      </p>
                                       <h4 className="mt-1 text-sm font-semibold text-white sm:text-base">
                                         {item.title}
                                       </h4>
@@ -272,7 +312,7 @@ const PresentationsSection: React.FC = () => {
                                       }}
                                       className="inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#111827] shadow-sm sm:text-sm"
                                     >
-                                      Open Preview
+                                      Preview
                                       <ExternalLink size={15} />
                                     </motion.button>
                                   </div>
@@ -312,7 +352,9 @@ const PresentationsSection: React.FC = () => {
                                       </button>
 
                                       <button
-                                        onClick={() => setSelectedPresentation(item)}
+                                        onClick={() =>
+                                          setSelectedPresentation(item)
+                                        }
                                         className="rounded-full bg-[#2F5FAA] px-4 py-2 text-xs font-semibold text-white sm:text-sm"
                                       >
                                         Full View
@@ -327,13 +369,14 @@ const PresentationsSection: React.FC = () => {
                       </div>
                     </motion.div>
 
-                    {/* Content Side */}
                     <motion.div
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true, amount: 0.2 }}
                       variants={staggerContainer}
-                      className={`${reverse ? "lg:order-1" : ""} px-1 sm:px-2 lg:px-0`}
+                      className={`${
+                        reverse ? "lg:order-1" : ""
+                      } px-1 sm:px-2 lg:px-0`}
                     >
                       <motion.div variants={contentVariant}>
                         <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#36A35C] sm:text-xs md:text-sm">
@@ -373,7 +416,10 @@ const PresentationsSection: React.FC = () => {
                         ))}
                       </motion.div>
 
-                      <motion.div variants={itemFade} className="mt-8 sm:mt-9">
+                      <motion.div
+                        variants={itemFade}
+                        className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row"
+                      >
                         <motion.button
                           whileHover={{ y: -2, scale: 1.02 }}
                           whileTap={{ scale: 0.97 }}
@@ -382,6 +428,15 @@ const PresentationsSection: React.FC = () => {
                         >
                           {item.buttonText}
                         </motion.button>
+
+                        <a
+                          href={item.driveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center rounded-full border border-[#dbe2ea] px-6 py-3 text-sm font-semibold text-[#2F5FAA] transition hover:bg-[#f8fafc]"
+                        >
+                          Open in Drive
+                        </a>
                       </motion.div>
                     </motion.div>
                   </div>
@@ -394,7 +449,6 @@ const PresentationsSection: React.FC = () => {
 
       <OxyGlobalFooter />
 
-      {/* Full Modal */}
       <AnimatePresence>
         {selectedPresentation && (
           <motion.div
