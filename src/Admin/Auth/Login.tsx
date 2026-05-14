@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { saveSession, type AdminSession } from "../auth";
+import logo from "../../assets/img/oxyglobal.png";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -34,7 +35,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-sm">
-        <img src="/oxyglobal.png" alt="OxyGlobal" className="h-10 mx-auto mb-6" />
+        <img src={logo} alt="OxyGlobal" className="h-20 mx-auto mb-4" />
         <h2 className="text-xl font-semibold text-center text-gray-800 mb-6">Admin Login</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
