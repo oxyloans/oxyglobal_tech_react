@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, type Variants, AnimatePresence } from "framer-motion";
-import { X, ExternalLink } from "lucide-react";
+import { X, ExternalLink, Download, FileCheck } from "lucide-react";
 import Header from "../LandingPage/Header";
 import OxyGlobalFooter from "../LandingPage/Footer";
 
@@ -12,10 +12,11 @@ type Presentation = {
   points: string[];
   image: string;
   imageAlt: string;
-  buttonText: string;
   driveLink: string;
   embedLink: string;
 };
+
+const GOOGLE_FORM_LINK = "https://forms.gle/6gUobMinaywetLD3A";
 
 const presentations: Presentation[] = [
   {
@@ -31,7 +32,6 @@ const presentations: Presentation[] = [
     ],
     image: "https://i.ibb.co/d0BTYQWC/present-1.png",
     imageAlt: "Corporate presentation preview",
-    buttonText: "View Presentation",
     driveLink:
       "https://drive.google.com/file/d/1UNzJ06s-4WWZWeV5heFIxQC-12Twf-lf/view?usp=drive_link",
     embedLink:
@@ -51,7 +51,6 @@ const presentations: Presentation[] = [
     image:
       "https://i.ibb.co/RTcv10T9/Chat-GPT-Image-May-12-2026-12-20-44-PM.png",
     imageAlt: "OXYGLOBAL.TECH 4P Ecosystem preview",
-    buttonText: "View 4P Ecosystem",
     driveLink:
       "https://drive.google.com/file/d/19VNXBmd7fB592sFVOxkszamclXPvQJCl/view",
     embedLink:
@@ -71,11 +70,10 @@ const presentations: Presentation[] = [
     image:
       "https://i.ibb.co/YTdyZrNg/Chat-GPT-Image-May-12-2026-12-26-02-PM.png",
     imageAlt: "OXY BFSAI presentation preview",
-    buttonText: "View OXY BFSAI",
     driveLink:
-      "https://drive.google.com/file/d/1jUt2-iqSC5UDCaVCfRbHLhCO4re9keQA/view",
+      "https://drive.google.com/file/d/1PiAG9nKpgL2VPB7yuZT2AOSHrbCfdNQA/view?usp=sharing",
     embedLink:
-      "https://drive.google.com/file/d/1jUt2-iqSC5UDCaVCfRbHLhCO4re9keQA/preview",
+      "https://drive.google.com/file/d/1PiAG9nKpgL2VPB7yuZT2AOSHrbCfdNQA/preview",
   },
   {
     id: 4,
@@ -90,7 +88,6 @@ const presentations: Presentation[] = [
     ],
     image: "https://i.ibb.co/TBZB36Gy/present-2.png",
     imageAlt: "Mission Million AI Cofounders preview",
-    buttonText: "Explore Presentation",
     driveLink:
       "https://drive.google.com/file/d/1wOp_3mr9LHEWsL7BIjR9de0WIgrH9dYE/view?usp=drive_link",
     embedLink:
@@ -164,63 +161,66 @@ const modalContent: Variants = {
 };
 
 const previewSwapVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    scale: 0.96,
-    y: 18,
-  },
+  hidden: { opacity: 0, scale: 0.96, y: 18 },
   visible: {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: {
-      duration: 0.45,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.45, ease: "easeOut" },
   },
   exit: {
     opacity: 0,
     scale: 1.02,
     y: -12,
-    transition: {
-      duration: 0.28,
-      ease: "easeInOut",
-    },
+    transition: { duration: 0.28, ease: "easeInOut" },
   },
 };
 
 const PresentationsSection: React.FC = () => {
-  const [selectedPresentation, setSelectedPresentation] =
+  const [downloadPresentation, setDownloadPresentation] =
     useState<Presentation | null>(null);
 
   const [openedPreviewId, setOpenedPreviewId] = useState<number | null>(null);
+  const [isFormOpened, setIsFormOpened] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
-    if (selectedPresentation) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = downloadPresentation ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
     };
-  }, [selectedPresentation]);
+  }, [downloadPresentation]);
 
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setSelectedPresentation(null);
-      }
-    };
+  const handleOpenForm = () => {
+    window.open(GOOGLE_FORM_LINK, "_blank");
+    setIsFormOpened(true);
+  };
 
-    window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, []);
+  const getDirectDownloadLink = (driveLink: string) => {
+    const match = driveLink.match(/\/d\/([^/]+)/);
+    const fileId = match ? match[1] : "";
+
+    return fileId
+      ? `https://drive.google.com/uc?export=download&id=${fileId}`
+      : driveLink;
+  };
+
+  const handleDownload = () => {
+    if (!downloadPresentation?.driveLink) return;
+
+    const downloadUrl = getDirectDownloadLink(downloadPresentation.driveLink);
+
+    const link = document.createElement("a");
+    link.href = downloadUrl;
+    link.setAttribute("download", `${downloadPresentation.title}.pdf`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <>
@@ -298,6 +298,7 @@ const PresentationsSection: React.FC = () => {
                                       <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80 sm:text-xs">
                                         {item.subtitle}
                                       </p>
+
                                       <h4 className="mt-1 text-sm font-semibold text-white sm:text-base">
                                         {item.title}
                                       </h4>
@@ -338,28 +339,18 @@ const PresentationsSection: React.FC = () => {
                                       <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80 sm:text-xs">
                                         Presentation Preview
                                       </p>
+
                                       <h4 className="mt-1 truncate text-sm font-semibold text-white sm:text-base">
                                         {item.title}
                                       </h4>
                                     </div>
 
-                                    <div className="flex flex-shrink-0 items-center gap-2">
-                                      <button
-                                        onClick={() => setOpenedPreviewId(null)}
-                                        className="rounded-full bg-white/90 px-4 py-2 text-xs font-semibold text-[#111827] backdrop-blur sm:text-sm"
-                                      >
-                                        Back
-                                      </button>
-
-                                      <button
-                                        onClick={() =>
-                                          setSelectedPresentation(item)
-                                        }
-                                        className="rounded-full bg-[#2F5FAA] px-4 py-2 text-xs font-semibold text-white sm:text-sm"
-                                      >
-                                        Full View
-                                      </button>
-                                    </div>
+                                    <button
+                                      onClick={() => setOpenedPreviewId(null)}
+                                      className="rounded-full bg-white/90 px-4 py-2 text-xs font-semibold text-[#111827] backdrop-blur sm:text-sm"
+                                    >
+                                      Back
+                                    </button>
                                   </div>
                                 </motion.div>
                               )}
@@ -409,6 +400,7 @@ const PresentationsSection: React.FC = () => {
                             className="flex items-start gap-3"
                           >
                             <div className="mt-1.5 h-2.5 w-2.5 flex-shrink-0 rounded-full bg-[#36A35C]" />
+
                             <p className="text-sm leading-6 text-[#3A3A3A] sm:text-[15px]">
                               {point}
                             </p>
@@ -418,17 +410,8 @@ const PresentationsSection: React.FC = () => {
 
                       <motion.div
                         variants={itemFade}
-                        className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row"
+                        className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap"
                       >
-                        <motion.button
-                          whileHover={{ y: -2, scale: 1.02 }}
-                          whileTap={{ scale: 0.97 }}
-                          onClick={() => setSelectedPresentation(item)}
-                          className="inline-flex items-center justify-center rounded-full bg-[#2F5FAA] px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-[#264d8d]"
-                        >
-                          {item.buttonText}
-                        </motion.button>
-
                         <a
                           href={item.driveLink}
                           target="_blank"
@@ -437,6 +420,17 @@ const PresentationsSection: React.FC = () => {
                         >
                           Open in Drive
                         </a>
+
+                        <button
+                          onClick={() => {
+                            setDownloadPresentation(item);
+                            setIsFormOpened(false);
+                          }}
+                          className="inline-flex items-center justify-center gap-2 rounded-full bg-[#36A35C] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#2d8f4f]"
+                        >
+                          <Download size={16} />
+                          Download Presentation
+                        </button>
                       </motion.div>
                     </motion.div>
                   </div>
@@ -450,14 +444,14 @@ const PresentationsSection: React.FC = () => {
       <OxyGlobalFooter />
 
       <AnimatePresence>
-        {selectedPresentation && (
+        {downloadPresentation && (
           <motion.div
             variants={modalBackdrop}
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 px-3 py-4 sm:px-6 sm:py-6"
-            onClick={() => setSelectedPresentation(null)}
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 px-4 py-6"
+            onClick={() => setDownloadPresentation(null)}
           >
             <motion.div
               variants={modalContent}
@@ -465,57 +459,52 @@ const PresentationsSection: React.FC = () => {
               animate="visible"
               exit="exit"
               onClick={(e) => e.stopPropagation()}
-              className="relative flex h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-[18px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.28)]"
+              className="w-full max-w-md rounded-2xl bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.28)]"
             >
-              <div className="flex items-center justify-between border-b border-[#e5e7eb] px-4 py-3 sm:px-5 sm:py-4">
-                <div className="min-w-0 pr-3">
-                  <h3 className="truncate text-base font-semibold text-[#111827] sm:text-lg">
-                    {selectedPresentation.title}
-                  </h3>
-                  <p className="mt-1 text-[12px] text-[#6b7280] sm:text-[13px]">
-                    Full presentation view
-                  </p>
-                </div>
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-bold text-[#111827]">
+                  Welcome to OXYGlobal.Tech
+                </h3>
 
-                <div className="flex items-center gap-2">
-                  <a
-                    href={selectedPresentation.driveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hidden rounded-full border border-[#dbe2ea] px-4 py-2 text-sm font-medium text-[#2F5FAA] transition hover:bg-[#f8fafc] sm:inline-flex"
-                  >
-                    Open in New Tab
-                  </a>
-
-                  <button
-                    onClick={() => setSelectedPresentation(null)}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-[#e5e7eb] text-[#334155] transition hover:bg-[#f8fafc]"
-                    aria-label="Close modal"
-                  >
-                    <X size={18} />
-                  </button>
-                </div>
-              </div>
-
-              <div className="border-b border-[#eef2f7] px-4 py-2 sm:hidden">
-                <a
-                  href={selectedPresentation.driveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex rounded-full border border-[#dbe2ea] px-4 py-2 text-xs font-medium text-[#2F5FAA]"
+                <button
+                  onClick={() => setDownloadPresentation(null)}
+                  className="rounded-full p-2 hover:bg-gray-100"
                 >
-                  Open in New Tab
-                </a>
+                  <X size={18} />
+                </button>
               </div>
 
-              <div className="flex-1 bg-[#f8fafc]">
-                <iframe
-                  src={selectedPresentation.embedLink}
-                  title={selectedPresentation.title}
-                  className="h-full w-full"
-                  allow="autoplay"
-                />
+              <p className="mt-4 text-sm leading-6 text-[#5C6672]">
+                Please fill the Google Form before accessing the presentation
+                PDF.
+              </p>
+
+              <div className="mt-6 flex flex-col gap-3">
+                <button
+                  onClick={handleOpenForm}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#2F5FAA] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#264d8d]"
+                >
+                  <FileCheck size={16} />
+                  Open Google Form
+                </button>
+
+                <button
+                  disabled={!isFormOpened}
+                  onClick={handleDownload}
+                  className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition ${
+                    isFormOpened
+                      ? "bg-[#36A35C] text-white hover:bg-[#2d8f4f]"
+                      : "cursor-not-allowed bg-gray-200 text-gray-500"
+                  }`}
+                >
+                  <Download size={16} />
+                  Download Presentation
+                </button>
               </div>
+
+              <p className="mt-5 text-center text-xs text-[#6b7280]">
+                Thank you for your interest in OXYGlobal.Tech.
+              </p>
             </motion.div>
           </motion.div>
         )}
