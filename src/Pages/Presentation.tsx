@@ -68,30 +68,52 @@ const presentations: Presentation[] = [
       "Responsible AI pipeline for full-stack application generation",
     ],
     image:
-      "https://i.ibb.co/YTdyZrNg/Chat-GPT-Image-May-12-2026-12-26-02-PM.png",
+      "https://i.ibb.co/LXmQ71T0/presentationpreview-H6rip1-VM.png",
     imageAlt: "OXY BFSAI presentation preview",
     driveLink:
       "https://drive.google.com/file/d/1PiAG9nKpgL2VPB7yuZT2AOSHrbCfdNQA/view?usp=sharing",
     embedLink:
       "https://drive.google.com/file/d/1PiAG9nKpgL2VPB7yuZT2AOSHrbCfdNQA/preview",
   },
+
+  // CENTRAL
   {
     id: 4,
-    subtitle: "AI Leadership Initiative",
+    subtitle: "AI Leadership Initiative | Central",
     title: "Mission Million AI Cofounders",
     description:
-      "A mission-driven initiative to empower future AI cofounders, innovators, and leaders building scalable ventures.",
+      "A national-level AI leadership initiative empowering future AI cofounders, innovators, and entrepreneurs across India.",
     points: [
-      "AI founder mindset",
-      "Innovation ecosystem access",
-      "Scalable AI venture opportunities",
+      "Central AI cofounder mission",
+      "Nationwide innovation ecosystem",
+      "AI startup and founder leadership opportunities",
     ],
     image: "https://i.ibb.co/TBZB36Gy/present-2.png",
-    imageAlt: "Mission Million AI Cofounders preview",
+    imageAlt: "Mission Million AI Cofounders Central preview",
     driveLink:
       "https://drive.google.com/file/d/1wOp_3mr9LHEWsL7BIjR9de0WIgrH9dYE/view?usp=drive_link",
     embedLink:
       "https://drive.google.com/file/d/1wOp_3mr9LHEWsL7BIjR9de0WIgrH9dYE/preview",
+  },
+
+  // TELANGANA STATE
+  {
+    id: 5,
+    subtitle: "AI Leadership Initiative | Telangana State",
+    title: "Mission Million AI Cofounders - Telangana",
+    description:
+      "A Telangana State focused AI initiative to create AI innovators, startup founders, and future technology leaders.",
+    points: [
+      "Telangana AI cofounder ecosystem",
+      "Startup and innovation opportunities",
+      "Future AI leadership development",
+    ],
+    image: "https://i.ibb.co/TBZB36Gy/present-2.png",
+    imageAlt: "Mission Million AI Cofounders Telangana preview",
+    driveLink:
+      "https://drive.google.com/file/d/1WMqg4_ct5_uBBP6aAfJZih_eQcuSmtfr/view?usp=sharing",
+    embedLink:
+      "https://drive.google.com/file/d/1WMqg4_ct5_uBBP6aAfJZih_eQcuSmtfr/preview",
   },
 ];
 
@@ -160,27 +182,10 @@ const modalContent: Variants = {
   },
 };
 
-const previewSwapVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.96, y: 18 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: { duration: 0.45, ease: "easeOut" },
-  },
-  exit: {
-    opacity: 0,
-    scale: 1.02,
-    y: -12,
-    transition: { duration: 0.28, ease: "easeInOut" },
-  },
-};
-
 const PresentationsSection: React.FC = () => {
   const [downloadPresentation, setDownloadPresentation] =
     useState<Presentation | null>(null);
 
-  const [openedPreviewId, setOpenedPreviewId] = useState<number | null>(null);
   const [isFormOpened, setIsFormOpened] = useState(false);
 
   useEffect(() => {
@@ -226,135 +231,67 @@ const PresentationsSection: React.FC = () => {
     <>
       <Header />
 
-      <main className="w-full bg-white pt-20 sm:pt-18 lg:pt-20">
-        <section className="w-full px-4 py-10 sm:px-6 sm:py-12 md:px-8 lg:px-12 lg:py-16 xl:px-16">
+      <main className="w-full bg-white pt-20">
+        <section className="w-full px-4 py-10 sm:px-6 lg:px-12">
           <div className="mx-auto max-w-7xl">
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true }}
               variants={staggerContainer}
-              className="mx-auto mb-12 max-w-3xl text-center sm:mb-14 lg:mb-16"
+              className="mx-auto mb-16 max-w-3xl text-center"
             >
               <motion.h2
                 variants={fadeUp}
-                className="mt-3 text-2xl font-bold leading-tight tracking-tight text-[#2F5FAA] sm:text-3xl md:text-4xl lg:text-5xl"
+                className="text-3xl font-bold text-[#2F5FAA] sm:text-4xl lg:text-5xl"
               >
                 Explore Our Presentations
               </motion.h2>
 
               <motion.p
                 variants={fadeUp}
-                className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[#3A3A3A] sm:text-base"
+                className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#555]"
               >
-                Discover our corporate vision, 4P ecosystem, OXY BFSAI platform,
-                and Mission Million AI Cofounders initiative.
+                Discover our ecosystem, AI platforms, BFSI innovation,
+                responsible AI solutions, and Mission Million AI Cofounders
+                initiatives.
               </motion.p>
             </motion.div>
 
-            <div className="space-y-16 sm:space-y-20 lg:space-y-24">
+            <div className="space-y-20">
               {presentations.map((item, index) => {
                 const reverse = index % 2 === 1;
                 const imageVariant = reverse ? fadeRight : fadeLeft;
                 const contentVariant = reverse ? fadeLeft : fadeRight;
-                const isPreviewOpen = openedPreviewId === item.id;
 
                 return (
                   <div
                     key={item.id}
-                    className="grid items-center gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20"
+                    className="grid items-center gap-12 lg:grid-cols-2"
                   >
                     <motion.div
                       initial="hidden"
                       whileInView="visible"
-                      viewport={{ once: true, amount: 0.2 }}
+                      viewport={{ once: true }}
                       variants={imageVariant}
                       className={reverse ? "lg:order-2" : ""}
                     >
-                      <div className="relative mx-auto w-full max-w-[560px]">
-                        <div className="overflow-hidden rounded-[14px] border border-[#e5e7eb] bg-white shadow-[0px_18px_40px_rgba(0,0,0,0.10)]">
-                          <div className="relative h-[260px] sm:h-[320px] md:h-[360px] lg:h-[400px] xl:h-[420px]">
-                            <AnimatePresence mode="wait">
-                              {!isPreviewOpen ? (
-                                <motion.div
-                                  key={`image-${item.id}`}
-                                  variants={previewSwapVariants}
-                                  initial="hidden"
-                                  animate="visible"
-                                  exit="exit"
-                                  className="relative h-full w-full cursor-pointer"
-                                  onClick={() => setOpenedPreviewId(item.id)}
-                                >
-                                  <img
-                                    src={item.image}
-                                    alt={item.imageAlt}
-                                    className="h-full w-full object-cover object-center"
-                                  />
+                      <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
+                        <div className="relative h-[280px] sm:h-[360px] lg:h-[420px]">
+                          <iframe
+                            src={item.embedLink}
+                            title={item.title}
+                            className="h-full w-full"
+                          />
 
-                                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-5">
+                            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
+                              {item.subtitle}
+                            </p>
 
-                                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 px-4 py-4 sm:px-5 sm:py-5">
-                                    <div className="min-w-0">
-                                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80 sm:text-xs">
-                                        {item.subtitle}
-                                      </p>
-
-                                      <h4 className="mt-1 text-sm font-semibold text-white sm:text-base">
-                                        {item.title}
-                                      </h4>
-                                    </div>
-
-                                    <motion.button
-                                      whileHover={{ y: -2, scale: 1.03 }}
-                                      whileTap={{ scale: 0.96 }}
-                                      onClick={(e) => {
-                                        e.stopPropagation();
-                                        setOpenedPreviewId(item.id);
-                                      }}
-                                      className="inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#111827] shadow-sm sm:text-sm"
-                                    >
-                                      Preview
-                                      <ExternalLink size={15} />
-                                    </motion.button>
-                                  </div>
-                                </motion.div>
-                              ) : (
-                                <motion.div
-                                  key={`pdf-${item.id}`}
-                                  variants={previewSwapVariants}
-                                  initial="hidden"
-                                  animate="visible"
-                                  exit="exit"
-                                  className="relative h-full w-full bg-[#f8fafc]"
-                                >
-                                  <iframe
-                                    src={item.embedLink}
-                                    title={item.title}
-                                    className="h-full w-full"
-                                    allow="autoplay"
-                                  />
-
-                                  <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-black/70 via-black/25 to-transparent px-4 py-4 sm:px-5 sm:py-5">
-                                    <div className="min-w-0">
-                                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80 sm:text-xs">
-                                        Presentation Preview
-                                      </p>
-
-                                      <h4 className="mt-1 truncate text-sm font-semibold text-white sm:text-base">
-                                        {item.title}
-                                      </h4>
-                                    </div>
-
-                                    <button
-                                      onClick={() => setOpenedPreviewId(null)}
-                                      className="rounded-full bg-white/90 px-4 py-2 text-xs font-semibold text-[#111827] backdrop-blur sm:text-sm"
-                                    >
-                                      Back
-                                    </button>
-                                  </div>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
+                            <h3 className="mt-2 text-lg font-bold text-white sm:text-xl">
+                              {item.title}
+                            </h3>
                           </div>
                         </div>
                       </div>
@@ -363,45 +300,44 @@ const PresentationsSection: React.FC = () => {
                     <motion.div
                       initial="hidden"
                       whileInView="visible"
-                      viewport={{ once: true, amount: 0.2 }}
+                      viewport={{ once: true }}
                       variants={staggerContainer}
-                      className={`${
-                        reverse ? "lg:order-1" : ""
-                      } px-1 sm:px-2 lg:px-0`}
+                      className={reverse ? "lg:order-1" : ""}
                     >
-                      <motion.div variants={contentVariant}>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#36A35C] sm:text-xs md:text-sm">
-                          {item.subtitle}
-                        </p>
-                      </motion.div>
+                      <motion.p
+                        variants={contentVariant}
+                        className="text-xs font-bold uppercase tracking-[0.2em] text-[#36A35C]"
+                      >
+                        {item.subtitle}
+                      </motion.p>
 
-                      <motion.div variants={contentVariant}>
-                        <h3 className="mt-3 max-w-[560px] text-2xl font-bold leading-tight text-[#111827] sm:text-3xl md:text-[34px] lg:text-4xl">
-                          {item.title}
-                        </h3>
-                      </motion.div>
+                      <motion.h2
+                        variants={contentVariant}
+                        className="mt-4 text-3xl font-bold leading-tight text-[#111827] sm:text-4xl"
+                      >
+                        {item.title}
+                      </motion.h2>
 
-                      <motion.div variants={contentVariant}>
-                        <p className="mt-5 max-w-[560px] text-sm leading-7 text-[#5C6672] sm:text-base">
-                          {item.description}
-                        </p>
-                      </motion.div>
+                      <motion.p
+                        variants={contentVariant}
+                        className="mt-5 text-sm leading-7 text-[#5C6672] sm:text-base"
+                      >
+                        {item.description}
+                      </motion.p>
 
                       <motion.div
                         variants={staggerContainer}
-                        className="mt-6 space-y-4 sm:mt-7 sm:space-y-5"
+                        className="mt-8 space-y-4"
                       >
                         {item.points.map((point, i) => (
                           <motion.div
                             key={i}
                             variants={itemFade}
-                            whileHover={{ x: 4 }}
-                            transition={{ duration: 0.2 }}
                             className="flex items-start gap-3"
                           >
-                            <div className="mt-1.5 h-2.5 w-2.5 flex-shrink-0 rounded-full bg-[#36A35C]" />
+                            <div className="mt-2 h-2.5 w-2.5 rounded-full bg-[#36A35C]" />
 
-                            <p className="text-sm leading-6 text-[#3A3A3A] sm:text-[15px]">
+                            <p className="text-sm leading-6 text-[#333]">
                               {point}
                             </p>
                           </motion.div>
@@ -410,15 +346,16 @@ const PresentationsSection: React.FC = () => {
 
                       <motion.div
                         variants={itemFade}
-                        className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap"
+                        className="mt-10 flex flex-col gap-4 sm:flex-row"
                       >
                         <a
                           href={item.driveLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center rounded-full border border-[#dbe2ea] px-6 py-3 text-sm font-semibold text-[#2F5FAA] transition hover:bg-[#f8fafc]"
+                          className="inline-flex items-center justify-center rounded-full border border-[#2F5FAA] px-6 py-3 text-sm font-semibold text-[#2F5FAA] transition hover:bg-[#2F5FAA] hover:text-white"
                         >
-                          Open in Drive
+                          <ExternalLink size={16} className="mr-2" />
+                          Open Presentation
                         </a>
 
                         <button
@@ -426,10 +363,10 @@ const PresentationsSection: React.FC = () => {
                             setDownloadPresentation(item);
                             setIsFormOpened(false);
                           }}
-                          className="inline-flex items-center justify-center gap-2 rounded-full bg-[#36A35C] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#2d8f4f]"
+                          className="inline-flex items-center justify-center rounded-full bg-[#36A35C] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#2d8f4f]"
                         >
-                          <Download size={16} />
-                          Download Presentation
+                          <Download size={16} className="mr-2" />
+                          Download PDF
                         </button>
                       </motion.div>
                     </motion.div>
@@ -450,7 +387,7 @@ const PresentationsSection: React.FC = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 px-4 py-6"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 px-4"
             onClick={() => setDownloadPresentation(null)}
           >
             <motion.div
@@ -459,51 +396,51 @@ const PresentationsSection: React.FC = () => {
               animate="visible"
               exit="exit"
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-md rounded-2xl bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.28)]"
+              className="w-full max-w-md rounded-3xl bg-white p-7 shadow-2xl"
             >
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-bold text-[#111827]">
-                  Welcome to OXYGlobal.Tech
+                <h3 className="text-2xl font-bold text-[#111827]">
+                  Download Presentation
                 </h3>
 
                 <button
                   onClick={() => setDownloadPresentation(null)}
                   className="rounded-full p-2 hover:bg-gray-100"
                 >
-                  <X size={18} />
+                  <X size={20} />
                 </button>
               </div>
 
               <p className="mt-4 text-sm leading-6 text-[#5C6672]">
-                Please fill the Google Form before accessing the presentation
-                PDF.
+                Please open and complete the Google Form before downloading the
+                presentation PDF.
               </p>
 
-              <div className="mt-6 flex flex-col gap-3">
+              <div className="mt-7 flex flex-col gap-4">
                 <button
                   onClick={handleOpenForm}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#2F5FAA] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#264d8d]"
+                  className="inline-flex items-center justify-center rounded-full bg-[#2F5FAA] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#264d8d]"
                 >
-                  <FileCheck size={16} />
+                  <FileCheck size={16} className="mr-2" />
                   Open Google Form
                 </button>
 
                 <button
                   disabled={!isFormOpened}
                   onClick={handleDownload}
-                  className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition ${
+                  className={`inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ${
                     isFormOpened
                       ? "bg-[#36A35C] text-white hover:bg-[#2d8f4f]"
                       : "cursor-not-allowed bg-gray-200 text-gray-500"
                   }`}
                 >
-                  <Download size={16} />
+                  <Download size={16} className="mr-2" />
                   Download Presentation
                 </button>
               </div>
 
-              <p className="mt-5 text-center text-xs text-[#6b7280]">
-                Thank you for your interest in OXYGlobal.Tech.
+              <p className="mt-5 text-center text-xs text-[#777]">
+                Thank you for your interest in OXYGLOBAL.TECH
               </p>
             </motion.div>
           </motion.div>

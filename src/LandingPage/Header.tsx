@@ -47,6 +47,12 @@ const Header: React.FC = () => {
     }
   };
 
+  const goToPresentations = () => {
+    navigate("/corporatepresentations");
+    setMobileOpen(false);
+  };
+
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
@@ -131,8 +137,28 @@ const Header: React.FC = () => {
                   </button>
                 );
               })}
+
+              <button
+                type="button"
+                onClick={goToPresentations}
+                className="rounded-full px-4 py-2.5 text-sm font-medium text-[#4B5563] transition-all duration-300 hover:bg-[#F8FAFC] hover:text-[#2F5FAA] xl:px-5 xl:text-[15px]"
+              >
+                Presentations
+              </button>
             </div>
           </nav>
+
+          {/* Desktop CTA Buttons */}
+          <div className="hidden items-center gap-3 lg:flex">
+            <button
+              type="button"
+              onClick={goToPresentations}
+              className="rounded-full border border-[#2F5FAA] bg-white px-5 py-2.5 text-sm font-semibold text-[#2F5FAA] shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#F4F8FF]"
+            >
+              Explore Presentations
+            </button>
+
+          </div>
 
           {/* Mobile Toggle */}
           <button
@@ -149,7 +175,7 @@ const Header: React.FC = () => {
         {/* Mobile Menu */}
         <div
           className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
-            mobileOpen ? "max-h-[420px] pb-4 opacity-100" : "max-h-0 opacity-0"
+            mobileOpen ? "max-h-[520px] pb-4 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <div className="mt-1 rounded-[24px] border border-[#E6EAF2] bg-white p-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)]">
@@ -172,6 +198,25 @@ const Header: React.FC = () => {
                   </button>
                 );
               })}
+
+              <button
+                type="button"
+                onClick={goToPresentations}
+                className="w-full rounded-2xl px-4 py-3 text-left text-[15px] font-medium text-[#374151] transition-all duration-300 hover:bg-[#F8FAFC] hover:text-[#2F5FAA]"
+              >
+                Presentations
+              </button>
+
+              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={goToPresentations}
+                  className="rounded-2xl border border-[#2F5FAA] bg-white px-4 py-3 text-center text-sm font-semibold text-[#2F5FAA] transition-all duration-300 hover:bg-[#F4F8FF]"
+                >
+                  Explore Presentations
+                </button>
+
+              </div>
             </div>
           </div>
         </div>

@@ -46,6 +46,10 @@ const LandingPage: React.FC = () => {
         <OxyGlobalHero />
       </section>
 
+            <section id="presentations">
+        <PresentationsPage />
+      </section>
+
       <section id="fourp-models">
         <FourP />
       </section>
@@ -62,9 +66,7 @@ const LandingPage: React.FC = () => {
         <Testimonials />
       </section>
 
-      <section id="presentations">
-        <PresentationsPage />
-      </section>
+
 
       <section id="team">
         <TeamPage />
