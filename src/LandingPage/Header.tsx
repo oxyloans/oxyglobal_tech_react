@@ -138,13 +138,6 @@ const Header: React.FC = () => {
                 );
               })}
 
-              <button
-                type="button"
-                onClick={goToPresentations}
-                className="rounded-full px-4 py-2.5 text-sm font-medium text-[#4B5563] transition-all duration-300 hover:bg-[#F8FAFC] hover:text-[#2F5FAA] xl:px-5 xl:text-[15px]"
-              >
-                Presentations
-              </button>
             </div>
           </nav>
 
@@ -198,14 +191,6 @@ const Header: React.FC = () => {
                   </button>
                 );
               })}
-
-              <button
-                type="button"
-                onClick={goToPresentations}
-                className="w-full rounded-2xl px-4 py-3 text-left text-[15px] font-medium text-[#374151] transition-all duration-300 hover:bg-[#F8FAFC] hover:text-[#2F5FAA]"
-              >
-                Presentations
-              </button>
 
               <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <button

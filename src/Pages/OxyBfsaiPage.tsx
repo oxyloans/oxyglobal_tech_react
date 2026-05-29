@@ -8,9 +8,9 @@ const OxyBfsaiPage: React.FC = () => {
   const [openPreview, setOpenPreview] = useState(false);
 
   const driveLink =
-    "https://drive.google.com/file/d/1jUt2-iqSC5UDCaVCfRbHLhCO4re9keQA/view";
+    "https://drive.google.com/file/d/1PiAG9nKpgL2VPB7yuZT2AOSHrbCfdNQA/view?usp=sharing";
   const embedLink =
-    "https://drive.google.com/file/d/1jUt2-iqSC5UDCaVCfRbHLhCO4re9keQA/preview";
+    "https://drive.google.com/file/d/1PiAG9nKpgL2VPB7yuZT2AOSHrbCfdNQA/preview";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -62,7 +62,7 @@ const OxyBfsaiPage: React.FC = () => {
               <div className="overflow-hidden rounded-[22px] border border-slate-200 bg-white shadow-[0_20px_55px_rgba(15,23,42,0.12)]">
                 <div className="relative h-[300px] sm:h-[360px] lg:h-[400px]">
                   <img
-                    src="https://i.ibb.co/YTdyZrNg/Chat-GPT-Image-May-12-2026-12-26-02-PM.png"
+                    src="https://i.ibb.co/DHTFSHgG/45.png"
                     alt="OXY BFSAI preview"
                     className="h-full w-full object-contain"
                   />

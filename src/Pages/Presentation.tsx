@@ -97,24 +97,24 @@ const presentations: Presentation[] = [
   },
 
   // TELANGANA STATE
-  {
-    id: 5,
-    subtitle: "AI Leadership Initiative | Telangana State",
-    title: "Mission Million AI Cofounders - Telangana",
-    description:
-      "A Telangana State focused AI initiative to create AI innovators, startup founders, and future technology leaders.",
-    points: [
-      "Telangana AI cofounder ecosystem",
-      "Startup and innovation opportunities",
-      "Future AI leadership development",
-    ],
-    image: "https://i.ibb.co/TBZB36Gy/present-2.png",
-    imageAlt: "Mission Million AI Cofounders Telangana preview",
-    driveLink:
-      "https://drive.google.com/file/d/1WMqg4_ct5_uBBP6aAfJZih_eQcuSmtfr/view?usp=sharing",
-    embedLink:
-      "https://drive.google.com/file/d/1WMqg4_ct5_uBBP6aAfJZih_eQcuSmtfr/preview",
-  },
+{
+  id: 5,
+  subtitle: "AI Leadership Initiative | Telangana State",
+  title: "Mission Million AI Cofounders - Telangana",
+  description:
+    "A Telangana State focused AI initiative to create AI innovators, startup founders, and future technology leaders.",
+  points: [
+    "Telangana AI cofounder ecosystem",
+    "Startup and innovation opportunities",
+    "Future AI leadership development",
+  ],
+  image: "https://i.ibb.co/TBZB36Gy/present-2.png",
+  imageAlt: "Mission Million AI Cofounders Telangana preview",
+  driveLink:
+    "https://drive.google.com/file/d/1GwHiY2TnpZ5kp6b3XVX9MEAhZRT47Swb/view?usp=sharing",
+  embedLink:
+    "https://drive.google.com/file/d/1GwHiY2TnpZ5kp6b3XVX9MEAhZRT47Swb/preview",
+},
 ];
 
 const fadeUp: Variants = {

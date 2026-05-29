@@ -154,6 +154,25 @@ const OxyGlobalHero: React.FC = () => {
             </div>
           </div>
 
+          {/* MOBILE IMAGE AFTER FORMERLY KNOWN AS */}
+          <div className="mb-7 flex w-full flex-col items-center justify-center lg:hidden">
+            <div className="w-full max-w-[260px] sm:max-w-[320px] md:max-w-[380px]">
+              <img
+                src={HEROIMAGE}
+                alt="Founder"
+                className="mx-auto w-full object-contain"
+              />
+            </div>
+
+            <button
+              type="button"
+              onClick={handleTalkToCEO}
+              className="talk-ceo-animate relative mt-5 overflow-hidden rounded-full bg-[#2F5FAA] px-8 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#244f92] sm:px-9"
+            >
+              <span className="relative z-10">Talk to CEO</span>
+            </button>
+          </div>
+
           <p className="mt-2 max-w-[95%] text-[14px] leading-6 text-[#3A3A3A] sm:max-w-2xl sm:text-[15px] sm:leading-7 md:text-[16px] lg:max-w-xl lg:text-[17px] xl:text-[18px]">
             <span className="font-semibold text-[#111827]">
               OXYGLOBAL TECHNOLOGIES{" "}
@@ -201,10 +220,10 @@ const OxyGlobalHero: React.FC = () => {
           </div>
         </div>
 
-        {/* RIGHT IMAGE + TALK TO CEO */}
-        <div className="order-2 flex items-center justify-center lg:justify-center">
+        {/* DESKTOP IMAGE + TALK TO CEO */}
+        <div className="order-2 hidden items-center justify-center lg:flex lg:justify-center">
           <div className="flex w-full flex-col items-center justify-center">
-            <div className="w-full max-w-[260px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[430px] xl:max-w-[470px]">
+            <div className="w-full max-w-[430px] xl:max-w-[470px]">
               <img
                 src={HEROIMAGE}
                 alt="Founder"
