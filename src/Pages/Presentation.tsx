@@ -71,9 +71,9 @@ const presentations: Presentation[] = [
       "https://i.ibb.co/LXmQ71T0/presentationpreview-H6rip1-VM.png",
     imageAlt: "OXY BFSAI presentation preview",
     driveLink:
-      "https://drive.google.com/file/d/1PiAG9nKpgL2VPB7yuZT2AOSHrbCfdNQA/view?usp=sharing",
+      "https://drive.google.com/file/d/1KWEiF3aoKynBEzCbYJZJp9dOikf-yaF5/view",
     embedLink:
-      "https://drive.google.com/file/d/1PiAG9nKpgL2VPB7yuZT2AOSHrbCfdNQA/preview",
+      "https://drive.google.com/file/d/1KWEiF3aoKynBEzCbYJZJp9dOikf-yaF5/preview",
   },
 
   // CENTRAL
