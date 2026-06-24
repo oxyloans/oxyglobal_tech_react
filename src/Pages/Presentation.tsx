@@ -14,7 +14,6 @@ import {
 import Header from "../LandingPage/Header";
 import OxyGlobalFooter from "../LandingPage/Footer";
 
-/* ── Types ──────────────────────────────────────────────────────────── */
 type Presentation = {
   id: number;
   subtitle: string;
@@ -37,7 +36,6 @@ type ResourceLink = {
   gradient: string;
 };
 
-/* ── Data ───────────────────────────────────────────────────────────── */
 const GOOGLE_FORM_LINK = "https://forms.gle/6gUobMinaywetLD3A";
 
 const resourceLinks: ResourceLink[] = [
@@ -112,8 +110,10 @@ const presentations: Presentation[] = [
       "100+ technical professionals and 6+ technology platforms",
       "AI, fintech, blockchain, marketplace, and startup ecosystem",
     ],
-    driveLink: "https://drive.google.com/file/d/19VNXBmd7fB592sFVOxkszamclXPvQJCl/view",
-    embedLink: "https://drive.google.com/file/d/19VNXBmd7fB592sFVOxkszamclXPvQJCl/preview",
+    driveLink:
+      "https://drive.google.com/file/d/19VNXBmd7fB592sFVOxkszamclXPvQJCl/view",
+    embedLink:
+      "https://drive.google.com/file/d/19VNXBmd7fB592sFVOxkszamclXPvQJCl/preview",
     accent: "#7C3AED",
   },
   {
@@ -169,39 +169,72 @@ const presentations: Presentation[] = [
   },
 ];
 
-/* ── Animation variants ─────────────────────────────────────────────── */
+const firstPresentations = presentations.slice(0, 3);
+const missionMillionPresentations = presentations.slice(3);
+
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
 };
+
 const fadeLeft: Variants = {
   hidden: { opacity: 0, x: -44 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+  },
 };
+
 const fadeRight: Variants = {
   hidden: { opacity: 0, x: 44 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+  },
 };
+
 const stagger: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.09 } },
 };
+
 const itemFade: Variants = {
   hidden: { opacity: 0, y: 14 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: "easeOut" },
+  },
 };
+
 const backdropV: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { duration: 0.22 } },
   exit: { opacity: 0, transition: { duration: 0.18 } },
 };
+
 const modalV: Variants = {
   hidden: { opacity: 0, y: 40, scale: 0.96 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } },
-  exit: { opacity: 0, y: 24, scale: 0.97, transition: { duration: 0.2 } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+  },
+  exit: {
+    opacity: 0,
+    y: 24,
+    scale: 0.97,
+    transition: { duration: 0.2 },
+  },
 };
 
-/* ── 3D Glossy Card ─────────────────────────────────────────────────── */
 const GlossyCard: React.FC<{ link: ResourceLink }> = ({ link }) => {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
@@ -239,12 +272,10 @@ const GlossyCard: React.FC<{ link: ResourceLink }> = ({ link }) => {
       style={{ transformStyle: "preserve-3d", perspective: 800 }}
       className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/60 bg-white shadow-md"
     >
-      {/* glossy gradient top band */}
       <div
-        className="relative h-[88px] w-full flex items-center px-5"
+        className="relative flex h-[88px] w-full items-center px-5"
         style={{ background: link.gradient }}
       >
-        {/* glass sheen */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -252,27 +283,25 @@ const GlossyCard: React.FC<{ link: ResourceLink }> = ({ link }) => {
               "linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0) 100%)",
           }}
         />
-        {/* frosted circle behind icon */}
-        <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/20 shadow-inner text-white backdrop-blur-sm">
+
+        <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/20 text-white shadow-inner backdrop-blur-sm">
           {link.icon}
         </div>
 
-        {/* top-right arrow */}
         <div className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-all duration-200 group-hover:bg-white/30">
           <ArrowUpRight size={14} />
         </div>
-
-        {/* bottom reflection line */}
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-px"
-          style={{ background: "rgba(255,255,255,0.25)" }}
-        />
       </div>
 
-      {/* card body */}
       <div className="flex flex-1 flex-col px-5 py-4">
-        <h4 className="text-sm font-bold text-[#111827] leading-snug">{link.title}</h4>
-        <p className="mt-1.5 text-xs leading-5 text-[#9CA3AF]">{link.description}</p>
+        <h4 className="text-sm font-bold leading-snug text-[#111827]">
+          {link.title}
+        </h4>
+
+        <p className="mt-1.5 text-xs leading-5 text-[#6B7280]">
+          {link.description}
+        </p>
+
         <div
           className="mt-4 inline-flex items-center gap-1 text-xs font-semibold"
           style={{ color: link.color }}
@@ -280,12 +309,11 @@ const GlossyCard: React.FC<{ link: ResourceLink }> = ({ link }) => {
           Visit platform
           <ArrowUpRight
             size={12}
-            className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            className="transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
           />
         </div>
       </div>
 
-      {/* bottom edge highlight (3D floor illusion) */}
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] rounded-b-2xl opacity-60"
         style={{ background: link.gradient }}
@@ -294,22 +322,183 @@ const GlossyCard: React.FC<{ link: ResourceLink }> = ({ link }) => {
   );
 };
 
-/* ── Component ──────────────────────────────────────────────────────── */
+const PresentationCard: React.FC<{
+  item: Presentation;
+  index: number;
+  onDownload: (item: Presentation) => void;
+}> = ({ item, index, onDownload }) => {
+  const reverse = index % 2 === 1;
+  const imgVar = reverse ? fadeRight : fadeLeft;
+  const txtVar = reverse ? fadeLeft : fadeRight;
+
+  return (
+    <motion.div
+      key={item.id}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.12 }}
+      variants={stagger}
+      className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+    >
+      <motion.div variants={imgVar} className={reverse ? "lg:order-2" : ""}>
+        <div className="overflow-hidden rounded-[24px] shadow-xl ring-1 ring-gray-200">
+          <div className="h-1 w-full" style={{ backgroundColor: item.accent }} />
+
+          <div
+            className="relative bg-gray-50"
+            style={{ height: "clamp(220px,34vw,400px)" }}
+          >
+            <iframe
+              src={item.embedLink}
+              title={item.title}
+              className="h-full w-full"
+              allow="autoplay"
+            />
+
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent px-5 py-4">
+              <p
+                className="text-[10px] font-bold uppercase tracking-[0.2em]"
+                style={{ color: item.accent }}
+              >
+                {item.subtitle}
+              </p>
+
+              <h3 className="mt-0.5 text-sm font-bold text-white sm:text-base">
+                {item.title}
+              </h3>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div variants={stagger} className={reverse ? "lg:order-1" : ""}>
+        <motion.p
+          variants={txtVar}
+          className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em]"
+          style={{ color: item.accent }}
+        >
+          {item.subtitle}
+        </motion.p>
+
+        <motion.h2
+          variants={txtVar}
+          className="text-2xl font-extrabold leading-tight tracking-tight text-[#0A0F1E] sm:text-3xl"
+        >
+          {item.title}
+        </motion.h2>
+
+        <motion.p
+          variants={txtVar}
+          className="mt-4 text-sm leading-7 text-[#4B5563] sm:text-[15px]"
+        >
+          {item.description}
+        </motion.p>
+
+        <motion.ul variants={stagger} className="mt-6 space-y-3">
+          {item.points.map((point, i) => (
+            <motion.li
+              key={i}
+              variants={itemFade}
+              className="flex items-start gap-3"
+            >
+              <span
+                className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
+                style={{ backgroundColor: item.accent + "18" }}
+              >
+                <CheckCircle2 size={13} style={{ color: item.accent }} />
+              </span>
+
+              <span className="text-sm leading-6 text-[#374151]">{point}</span>
+            </motion.li>
+          ))}
+        </motion.ul>
+
+        <motion.div variants={itemFade} className="mt-8 flex flex-wrap gap-3">
+          <motion.a
+            href={item.driveLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 420, damping: 22 }}
+            className="inline-flex items-center gap-2 rounded-xl border-2 border-[#0A0F1E] bg-transparent px-5 py-2.5 text-sm font-semibold text-[#0A0F1E] transition-colors hover:bg-[#0A0F1E] hover:text-white"
+          >
+            <ExternalLink size={15} />
+            Open Presentation
+          </motion.a>
+
+          <motion.button
+            onClick={() => onDownload(item)}
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 420, damping: 22 }}
+            style={{ backgroundColor: item.accent }}
+            className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-opacity hover:opacity-90"
+          >
+            <Download size={15} />
+            Download PDF
+          </motion.button>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const OurUniquePlatforms: React.FC = () => {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={stagger}
+      className="rounded-[32px] bg-[#F8FAFC] px-5 py-14 sm:px-8 lg:px-10"
+    >
+      <motion.div variants={fadeUp} className="mb-10 text-center">
+
+        <h2 className="mt-4 text-3xl font-extrabold text-[#0A0F1E] sm:text-4xl">
+          Our Unique Platforms
+        </h2>
+
+        <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-[#6B7280] sm:text-base">
+          Explore AI platforms, banking solutions, compliance tools, and digital
+          ecosystems built to drive growth, automation, and innovation.
+        </p>
+      </motion.div>
+
+      <div
+        style={{ perspective: "1200px" }}
+        className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+      >
+        {resourceLinks.map((link) => (
+          <GlossyCard key={link.id} link={link} />
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
 const PresentationsSection: React.FC = () => {
-  const [downloadPresentation, setDownloadPresentation] = useState<Presentation | null>(null);
+  const [downloadPresentation, setDownloadPresentation] =
+    useState<Presentation | null>(null);
   const [isFormOpened, setIsFormOpened] = useState(false);
 
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = downloadPresentation ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [downloadPresentation]);
 
   const getDirectDownloadLink = (driveLink: string) => {
     const match = driveLink.match(/\/d\/([^/]+)/);
     const fileId = match ? match[1] : "";
-    return fileId ? `https://drive.google.com/uc?export=download&id=${fileId}` : driveLink;
+    return fileId
+      ? `https://drive.google.com/uc?export=download&id=${fileId}`
+      : driveLink;
   };
 
   const handleOpenForm = () => {
@@ -319,6 +508,7 @@ const PresentationsSection: React.FC = () => {
 
   const handleDownload = () => {
     if (!downloadPresentation?.driveLink) return;
+
     const url = getDirectDownloadLink(downloadPresentation.driveLink);
     const a = document.createElement("a");
     a.href = url;
@@ -328,13 +518,16 @@ const PresentationsSection: React.FC = () => {
     document.body.removeChild(a);
   };
 
+  const openDownloadModal = (item: Presentation) => {
+    setDownloadPresentation(item);
+    setIsFormOpened(false);
+  };
+
   return (
     <>
       <Header />
 
       <main className="w-full bg-white">
-
-        {/* ══ HERO ══════════════════════════════════════════════════════ */}
         <section className="bg-white px-5 pb-10 pt-24 sm:pt-28">
           <motion.div
             initial="hidden"
@@ -348,160 +541,44 @@ const PresentationsSection: React.FC = () => {
             >
               Explore Our Presentations
             </motion.h1>
+
             <motion.p
               variants={fadeUp}
               className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#6B7280] sm:text-base"
             >
-              Deep dives into our ecosystem, AI platforms, BFSI innovation, and the
-              Mission Million AI Cofounders initiative.
+              Deep dives into our ecosystem, AI platforms, BFSI innovation, and
+              the Mission Million AI Cofounders initiative.
             </motion.p>
           </motion.div>
         </section>
 
-        {/* ══ PRESENTATIONS ═════════════════════════════════════════════ */}
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-14">
           <div className="space-y-24">
-            {presentations.map((item, index) => {
-              const reverse = index % 2 === 1;
-              const imgVar = reverse ? fadeRight : fadeLeft;
-              const txtVar = reverse ? fadeLeft : fadeRight;
+            {firstPresentations.map((item, index) => (
+              <PresentationCard
+                key={item.id}
+                item={item}
+                index={index}
+                onDownload={openDownloadModal}
+              />
+            ))}
 
-              return (
-                <motion.div
-                  key={item.id}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.12 }}
-                  variants={stagger}
-                  className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
-                >
-                  {/* Embed */}
-                  <motion.div variants={imgVar} className={reverse ? "lg:order-2" : ""}>
-                    <div className="overflow-hidden rounded-[24px] shadow-xl ring-1 ring-gray-200">
-                      <div className="h-1 w-full" style={{ backgroundColor: item.accent }} />
-                      <div className="relative bg-gray-50" style={{ height: "clamp(220px,34vw,400px)" }}>
-                        <iframe
-                          src={item.embedLink}
-                          title={item.title}
-                          className="h-full w-full"
-                          allow="autoplay"
-                        />
-                        <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent px-5 py-4">
-                          <p
-                            className="text-[10px] font-bold uppercase tracking-[0.2em]"
-                            style={{ color: item.accent }}
-                          >
-                            {item.subtitle}
-                          </p>
-                          <h3 className="mt-0.5 text-sm font-bold text-white sm:text-base">
-                            {item.title}
-                          </h3>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
+            <OurUniquePlatforms />
 
-                  {/* Content */}
-                  <motion.div variants={stagger} className={reverse ? "lg:order-1" : ""}>
-                    <motion.p
-                      variants={txtVar}
-                      className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em]"
-                      style={{ color: item.accent }}
-                    >
-                      {item.subtitle}
-                    </motion.p>
-
-                    <motion.h2
-                      variants={txtVar}
-                      className="text-2xl font-extrabold leading-tight tracking-tight text-[#0A0F1E] sm:text-3xl"
-                    >
-                      {item.title}
-                    </motion.h2>
-
-                    <motion.p
-                      variants={txtVar}
-                      className="mt-4 text-sm leading-7 text-[#4B5563] sm:text-[15px]"
-                    >
-                      {item.description}
-                    </motion.p>
-
-                    <motion.ul variants={stagger} className="mt-6 space-y-3">
-                      {item.points.map((point, i) => (
-                        <motion.li key={i} variants={itemFade} className="flex items-start gap-3">
-                          <span
-                            className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
-                            style={{ backgroundColor: item.accent + "18" }}
-                          >
-                            <CheckCircle2 size={13} style={{ color: item.accent }} />
-                          </span>
-                          <span className="text-sm leading-6 text-[#374151]">{point}</span>
-                        </motion.li>
-                      ))}
-                    </motion.ul>
-
-                    {/* CTAs */}
-                    <motion.div variants={itemFade} className="mt-8 flex flex-wrap gap-3">
-                      <motion.a
-                        href={item.driveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.03, y: -2 }}
-                        whileTap={{ scale: 0.97 }}
-                        transition={{ type: "spring", stiffness: 420, damping: 22 }}
-                        className="inline-flex items-center gap-2 rounded-xl border-2 border-[#0A0F1E] bg-transparent px-5 py-2.5 text-sm font-semibold text-[#0A0F1E] transition-colors hover:bg-[#0A0F1E] hover:text-white"
-                      >
-                        <ExternalLink size={15} />
-                        Open Presentation
-                      </motion.a>
-
-                      <motion.button
-                        onClick={() => { setDownloadPresentation(item); setIsFormOpened(false); }}
-                        whileHover={{ scale: 1.03, y: -2 }}
-                        whileTap={{ scale: 0.97 }}
-                        transition={{ type: "spring", stiffness: 420, damping: 22 }}
-                        style={{ backgroundColor: item.accent }}
-                        className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-opacity hover:opacity-90"
-                      >
-                        <Download size={15} />
-                        Download PDF
-                      </motion.button>
-                    </motion.div>
-                  </motion.div>
-                </motion.div>
-              );
-            })}
+            {missionMillionPresentations.map((item, index) => (
+              <PresentationCard
+                key={item.id}
+                item={item}
+                index={index + firstPresentations.length}
+                onDownload={openDownloadModal}
+              />
+            ))}
           </div>
-
-          {/* ══ PLATFORM URLs — 3D glossy cards ═══════════════════════ */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={stagger}
-            className="mt-28"
-          >
-            <motion.div variants={fadeUp} className="mb-8 text-center">
-              <h2 className="text-xl font-bold text-[#0A0F1E] sm:text-2xl">
-                Our Ecosystem Links 
-              </h2>
-            </motion.div>
-
-            {/* perspective container so 3d tilt looks right */}
-            <div
-              style={{ perspective: "1200px" }}
-              className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
-            >
-              {resourceLinks.map((link) => (
-                <GlossyCard key={link.id} link={link} />
-              ))}
-            </div>
-          </motion.div>
         </div>
       </main>
 
       <OxyGlobalFooter />
 
-      {/* ══ DOWNLOAD MODAL ════════════════════════════════════════════════ */}
       <AnimatePresence>
         {downloadPresentation && (
           <motion.div
@@ -520,10 +597,8 @@ const PresentationsSection: React.FC = () => {
               onClick={(e) => e.stopPropagation()}
               className="w-full max-w-[430px] overflow-hidden rounded-t-[28px] bg-white shadow-2xl sm:rounded-[28px]"
             >
-              {/* drag pill */}
               <div className="mx-auto mt-3 h-1 w-10 rounded-full bg-gray-200 sm:hidden" />
 
-              {/* modal header */}
               <div className="flex items-start justify-between px-6 pb-3 pt-6">
                 <div>
                   <p
@@ -532,10 +607,12 @@ const PresentationsSection: React.FC = () => {
                   >
                     Download PDF
                   </p>
+
                   <h3 className="text-lg font-extrabold leading-snug text-[#0A0F1E]">
                     {downloadPresentation.title}
                   </h3>
                 </div>
+
                 <motion.button
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.9 }}
@@ -550,26 +627,36 @@ const PresentationsSection: React.FC = () => {
 
               <div className="px-6 pb-6">
                 <p className="text-sm leading-6 text-[#6B7280]">
-                  Complete the short Google Form first — the download unlocks right after.
+                  Complete the short Google Form first — the download unlocks
+                  right after.
                 </p>
 
-                {/* step 1 */}
                 <div
                   className={`mt-4 flex items-center gap-4 rounded-2xl border p-4 transition-all duration-300 ${
-                    isFormOpened ? "border-[#059669] bg-[#F0FDF4]" : "border-gray-200 bg-gray-50"
+                    isFormOpened
+                      ? "border-[#059669] bg-[#F0FDF4]"
+                      : "border-gray-200 bg-gray-50"
                   }`}
                 >
                   <div
                     className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold transition-colors duration-300 ${
-                      isFormOpened ? "bg-[#059669] text-white" : "bg-gray-200 text-gray-500"
+                      isFormOpened
+                        ? "bg-[#059669] text-white"
+                        : "bg-gray-200 text-gray-500"
                     }`}
                   >
                     {isFormOpened ? <CheckCircle2 size={17} /> : "1"}
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-[#111827]">Fill the Google Form</p>
-                    <p className="text-xs text-[#9CA3AF]">Quick registration · 30 sec</p>
+
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-semibold text-[#111827]">
+                      Fill the Google Form
+                    </p>
+                    <p className="text-xs text-[#9CA3AF]">
+                      Quick registration · 30 sec
+                    </p>
                   </div>
+
                   {!isFormOpened && (
                     <motion.button
                       whileHover={{ scale: 1.05 }}
@@ -582,23 +669,32 @@ const PresentationsSection: React.FC = () => {
                   )}
                 </div>
 
-                {/* step 2 */}
                 <div
                   className={`mt-3 flex items-center gap-4 rounded-2xl border p-4 transition-all duration-300 ${
-                    isFormOpened ? "border-[#2563EB] bg-[#EFF6FF]" : "border-gray-100 bg-gray-50 opacity-40"
+                    isFormOpened
+                      ? "border-[#2563EB] bg-[#EFF6FF]"
+                      : "border-gray-100 bg-gray-50 opacity-40"
                   }`}
                 >
                   <div
                     className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold transition-colors duration-300 ${
-                      isFormOpened ? "bg-[#2563EB] text-white" : "bg-gray-200 text-gray-400"
+                      isFormOpened
+                        ? "bg-[#2563EB] text-white"
+                        : "bg-gray-200 text-gray-400"
                     }`}
                   >
                     {isFormOpened ? <Download size={15} /> : "2"}
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-[#111827]">Download PDF</p>
-                    <p className="text-xs text-[#9CA3AF]">Full presentation file</p>
+
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-semibold text-[#111827]">
+                      Download PDF
+                    </p>
+                    <p className="text-xs text-[#9CA3AF]">
+                      Full presentation file
+                    </p>
                   </div>
+
                   {isFormOpened && (
                     <motion.button
                       whileHover={{ scale: 1.05 }}
