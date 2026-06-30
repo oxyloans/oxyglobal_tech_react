@@ -22,7 +22,7 @@ const teamMembers = [
     name: "Ramadevi.T",
     role: "Co-Founder & CTO",
     img: Rama,
-    linkedin: "https://www.linkedin.com/in/ramadevi-thatavarti-969828284/",
+    linkedin: "https://www.linkedin.com/in/ramadevi-thatavarti/",
   },
   {
     name: "Subhash.S",
