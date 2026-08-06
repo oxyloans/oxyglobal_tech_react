@@ -8,9 +8,9 @@ const OxyBfsaiPage: React.FC = () => {
   const [openPreview, setOpenPreview] = useState(false);
 
   const driveLink =
-    "https://drive.google.com/file/d/1KWEiF3aoKynBEzCbYJZJp9dOikf-yaF5/view?usp=sharing";
+    "https://drive.google.com/file/d/1mHnuDGFMyGq_DEx3GV8n1abVl2YO5UAb/view?usp=sharing";
   const embedLink =
-    "https://drive.google.com/file/d/1KWEiF3aoKynBEzCbYJZJp9dOikf-yaF5/preview";
+    "https://drive.google.com/file/d/1mHnuDGFMyGq_DEx3GV8n1abVl2YO5UAb/preview";
 
   useEffect(() => {
     window.scrollTo(0, 0);

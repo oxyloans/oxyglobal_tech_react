@@ -128,9 +128,9 @@ const presentations: Presentation[] = [
       "Responsible AI pipeline for full-stack application generation",
     ],
     driveLink:
-      "https://drive.google.com/file/d/1PiAG9nKpgL2VPB7yuZT2AOSHrbCfdNQA/view?usp=sharing",
+      "https://drive.google.com/file/d/1mHnuDGFMyGq_DEx3GV8n1abVl2YO5UAb/view?usp=sharing",
     embedLink:
-      "https://drive.google.com/file/d/1PiAG9nKpgL2VPB7yuZT2AOSHrbCfdNQA/preview",
+      "https://drive.google.com/file/d/1mHnuDGFMyGq_DEx3GV8n1abVl2YO5UAb/preview",
     accent: "#059669",
   },
   {
