@@ -135,8 +135,8 @@ const tabData: Record<
   },
 
   capital: {
-    title: "Capital",
-    shortTitle: "Capital",
+    title: "caPital",
+    shortTitle: "caPital",
     description:
       "Connecting ideas, entrepreneurs, and platforms with funding ecosystems.",
     items: [
@@ -164,7 +164,7 @@ const tabs: { key: TabKey; label: string }[] = [
   { key: "people", label: "People" },
   { key: "platforms", label: "Platforms" },
   { key: "products", label: "Products" },
-  { key: "capital", label: "Capital" },
+  { key: "capital", label: "caPital" },
 ];
 
 const FourP: React.FC = () => {

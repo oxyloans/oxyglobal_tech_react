@@ -87,7 +87,7 @@ const presentations: Presentation[] = [
     subtitle: "OXYGLOBAL.TECH",
     title: "Corporate Presentation",
     description:
-      "Explore our business ecosystem, vision, and growth model across People, Platforms, Products, and Capital.",
+      "Explore our business ecosystem, vision, and growth model across People, Platforms, Products, and caPital.",
     points: [
       "Company overview and ecosystem",
       "Technology platforms and business model",

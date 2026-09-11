@@ -27,7 +27,7 @@ const Globalpresent: React.FC = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="font-poppins text-[28px] font-bold leading-tight text-[#111827] sm:text-[36px] md:text-[42px] lg:text-[48px]"
         >
-          Connecting People, Platforms, Products & Capital to Build{" "}
+          Connecting People, Platforms, Products & caPital to Build{" "}
           <span className="relative inline-block text-[#2F5FAA]">
             Global Innovation
             <span className="underlineLoop absolute left-0 bottom-[-6px] h-[3px] w-full rounded-full bg-[#2F5FAA]" />

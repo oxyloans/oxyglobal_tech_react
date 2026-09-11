@@ -106,7 +106,7 @@ const PresentationPage: React.FC = () => {
                 </h4>
                 <p className="mt-2 text-sm leading-7 text-[#5C6672] sm:text-base">
                   Explore our business ecosystem, vision, and growth model
-                  across People, Platforms, Products, and Capital.
+                  across People, Platforms, Products, and caPital.
                 </p>
               </motion.div>
 
