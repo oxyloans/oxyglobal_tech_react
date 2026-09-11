@@ -204,7 +204,7 @@ const OxyGlobalHero: React.FC = () => {
               </span>
               <span className="px-1 text-[#C4CAD4] sm:px-2">|</span>
               <span className="word-underline word-capital text-[#F97316]">
-                Capital
+                caPital
               </span>
             </span>
           </h1>
