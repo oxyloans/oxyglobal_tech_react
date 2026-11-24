@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, type Variants } from "framer-motion";
-import PresentationImage from "../assets/img/presentationpreview.png";
+import PresentationImage from "../assets/img/presentationpreview.webp";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -74,6 +74,8 @@ const PresentationPage: React.FC = () => {
             <motion.img
               src={PresentationImage}
               alt="Presentation Preview"
+              loading="lazy"
+              decoding="async"
               className="h-auto w-full max-w-[600px] object-contain"
               initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -101,19 +103,19 @@ const PresentationPage: React.FC = () => {
 
             <motion.div className="mt-8 space-y-8" variants={staggerWrap}>
               <motion.div variants={fadeUp}>
-                <h4 className="text-lg font-medium text-[#0F172A] sm:text-xl md:text-2xl">
+                <h3 className="text-lg font-medium text-[#0F172A] sm:text-xl md:text-2xl">
                   Corporate Presentation
-                </h4>
+                </h3>
                 <p className="mt-2 text-sm leading-7 text-[#5C6672] sm:text-base">
                   Explore our business ecosystem, vision, and growth model
-                  across People, Platforms, Products, and caPital.
+                  across People, Platforms, Products, and Capital.
                 </p>
               </motion.div>
 
               <motion.div variants={fadeUp}>
-                <h4 className="text-lg font-medium text-[#0F172A] sm:text-xl md:text-2xl">
+                <h3 className="text-lg font-medium text-[#0F172A] sm:text-xl md:text-2xl">
                   Mission Million AI Cofounders
-                </h4>
+                </h3>
                 <p className="mt-2 text-sm leading-7 text-[#5C6672] sm:text-base">
                   A mission-driven initiative designed to inspire future AI
                   cofounders, innovators, and leaders building scalable
@@ -124,6 +126,8 @@ const PresentationPage: React.FC = () => {
 
             <motion.div className="mt-10" variants={fadeUp}>
               <motion.button
+                type="button"
+                aria-label="Explore all corporate presentations"
                 onClick={() => navigate("/corporatepresentations")}
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.97 }}

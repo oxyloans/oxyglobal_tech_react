@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
-import OXYGLOBAL_LOGO from "../assets/img/oxyglobal.png";
+import OXYGLOBAL_LOGO from "../assets/img/oxyglobal.webp";
 
 const navItems = [
   { label: "4P Models", href: "fourp-models" },

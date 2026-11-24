@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import GLOBAL_IMAGE from "../assets/img/fourp-global.png";
+import GLOBAL_IMAGE from "../assets/img/fourp-global.webp";
 
 const Globalpresent: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const Globalpresent: React.FC = () => {
         }
       `}</style>
 
-      <div className="mx-auto max-w-6xl text-center">
+      <div className="mx-auto max-w-7xl text-center">
         <motion.h2
           initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -27,7 +27,7 @@ const Globalpresent: React.FC = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="font-poppins text-[28px] font-bold leading-tight text-[#111827] sm:text-[36px] md:text-[42px] lg:text-[48px]"
         >
-          Connecting People, Platforms, Products & caPital to Build{" "}
+          Connecting People, Platforms, Products & Capital to Build{" "}
           <span className="relative inline-block text-[#2F5FAA]">
             Global Innovation
             <span className="underlineLoop absolute left-0 bottom-[-6px] h-[3px] w-full rounded-full bg-[#2F5FAA]" />
@@ -37,6 +37,8 @@ const Globalpresent: React.FC = () => {
         <motion.img
           src={GLOBAL_IMAGE}
           alt="Global innovation network"
+          loading="lazy"
+          decoding="async"
           initial={{ opacity: 0, y: 28, scale: 0.97 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           whileHover={{ y: -4, scale: 1.01 }}

@@ -16,7 +16,7 @@ interface Testimonial {
 const THEME_GREEN = "#36A35C";
 const CARD_BG = "#F5F3F7";
 const CARD_TEXT = "#2f2f2f";
-const CARD_SUBTEXT = "#7a7a7a";
+const CARD_SUBTEXT = "#4b5563";
 const GAP = 24;
 
 const headingFade: Variants = {
@@ -222,7 +222,7 @@ const Testimonials: React.FC = () => {
         }
       `}</style>
 
-      <div className="mx-auto max-w-[1400px]">
+      <div className="mx-auto max-w-7xl">
         <motion.div
           variants={headingFade}
           initial="hidden"
@@ -238,7 +238,7 @@ const Testimonials: React.FC = () => {
             </span>
           </h2>
 
-          <p className="mx-auto mt-4 max-w-3xl text-[14px] leading-6 text-[#5b6470] sm:text-[15px]">
+          <p className="mx-auto mt-4 max-w-3xl text-[14px] leading-6 text-[#4b5563] sm:text-[15px]">
             We’re proud to be trusted by clients across industries and long-term
             partnerships.
           </p>
@@ -286,6 +286,7 @@ const Testimonials: React.FC = () => {
         >
           <div className="flex items-center gap-3">
             <motion.button
+              type="button"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.94 }}
               onClick={goPrev}
@@ -309,6 +310,7 @@ const Testimonials: React.FC = () => {
             </motion.button>
 
             <motion.button
+              type="button"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.94 }}
               onClick={goNext}

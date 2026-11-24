@@ -27,7 +27,7 @@ const OxyGlobal4PPage: React.FC = () => {
     {
       icon: Users,
       title: "People",
-      color: "#f97316",
+      color: "#c2410c",
       text: "100+ technical professionals across AI, Java, React, BFSI, e-commerce, and fractional ownership.",
     },
     {

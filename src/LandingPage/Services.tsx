@@ -47,7 +47,7 @@ const platforms: Platform[] = [
     name: "ASKOXY.AI",
     tagline: "AI-Powered Assistant",
     url: "https://askoxy.ai",
-    image: "https://i.ibb.co/mrsmW1m0/askoxy.png",
+    image: "https://i.ibb.co/bRF71ZFc/askoxy.png",
     color: "#3FBF9A",
     accent: "#2F5FAA",
     category: "AI / SaaS",
@@ -178,7 +178,7 @@ export default function Services() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="text-center"
+        className="mx-auto max-w-7xl text-center"
         style={{
           paddingLeft: sectionPaddingX,
           paddingRight: sectionPaddingX,
@@ -312,6 +312,8 @@ export default function Services() {
                   <motion.img
                     src={pl.image}
                     alt={pl.name}
+                    loading="lazy"
+                    decoding="async"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.25 }}
                     style={{
@@ -359,7 +361,7 @@ export default function Services() {
                       style={{
                         margin: "5px 0 0",
                         fontWeight: 500,
-                        color: "#6b7280",
+                        color: "#4b5563",
                         fontSize: isMobile ? 10 : 12,
                         lineHeight: 1.4,
                         display: "-webkit-box",
@@ -376,6 +378,7 @@ export default function Services() {
                     href={pl.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Explore ${pl.name}`}
                     onClick={(e) => e.stopPropagation()}
                     whileHover={{ scale: 1.04 }}
                     whileTap={{ scale: 0.97 }}
@@ -432,9 +435,11 @@ export default function Services() {
           marginTop: isMobile ? 18 : 22,
         }}
       >
-        {platforms.map((_, i) => (
+        {platforms.map((pl, i) => (
           <motion.button
             key={i}
+            type="button"
+            aria-label={`Go to slide ${i + 1}: ${pl.name}`}
             whileTap={{ scale: 0.92 }}
             onClick={() => {
               goToDot(i);
@@ -473,6 +478,8 @@ function ArrowBtn({
 
   return (
     <button
+      type="button"
+      aria-label={side === "left" ? "Previous platform slide" : "Next platform slide"}
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

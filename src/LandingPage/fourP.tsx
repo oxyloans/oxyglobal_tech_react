@@ -11,10 +11,10 @@ import {
   BadgeDollarSign,
 } from "lucide-react";
 
-import PEOPLE_IMAGE from "../assets/img/people.png";
-import PRODUCTS_IMAGE from "../assets/img/products.png";
-import PLATFORMS_IMAGE from "../assets/img/platforms.png";
-import CAPITAL_IMAGE from "../assets/img/capital.png";
+import PEOPLE_IMAGE from "../assets/img/people.webp";
+import PRODUCTS_IMAGE from "../assets/img/products.webp";
+import PLATFORMS_IMAGE from "../assets/img/platforms.webp";
+import CAPITAL_IMAGE from "../assets/img/capital.webp";
 
 type TabKey = "people" | "platforms" | "products" | "capital";
 
@@ -135,8 +135,8 @@ const tabData: Record<
   },
 
   capital: {
-    title: "caPital",
-    shortTitle: "caPital",
+    title: "Capital",
+    shortTitle: "Capital",
     description:
       "Connecting ideas, entrepreneurs, and platforms with funding ecosystems.",
     items: [
@@ -164,7 +164,7 @@ const tabs: { key: TabKey; label: string }[] = [
   { key: "people", label: "People" },
   { key: "platforms", label: "Platforms" },
   { key: "products", label: "Products" },
-  { key: "capital", label: "caPital" },
+  { key: "capital", label: "Capital" },
 ];
 
 const FourP: React.FC = () => {
@@ -224,6 +224,7 @@ const FourP: React.FC = () => {
             return (
               <motion.button
                 key={tab.key}
+                type="button"
                 variants={itemFade}
                 onClick={() => setActiveTab(tab.key)}
                 whileHover={{ y: -2 }}
@@ -312,7 +313,7 @@ const FourP: React.FC = () => {
                       <h4 className="text-[15px] font-semibold text-[#111827] sm:text-[16px]">
                         {item.title}
                       </h4>
-                      <p className="mt-1 text-[13px] leading-6 text-[#6b7280] sm:text-[14px] md:text-[15px]">
+                      <p className="mt-1 text-[13px] leading-6 text-[#4b5563] sm:text-[14px] md:text-[15px]">
                         {item.text}
                       </p>
                     </div>
@@ -334,6 +335,8 @@ const FourP: React.FC = () => {
               <motion.img
                 src={active.image}
                 alt={active.title}
+                loading="lazy"
+                decoding="async"
                 whileHover={{ y: -4, scale: 1.01 }}
                 transition={{ duration: 0.25 }}
                 className="w-full max-w-[320px] object-contain sm:max-w-[380px] md:max-w-[430px] lg:max-w-[480px]"

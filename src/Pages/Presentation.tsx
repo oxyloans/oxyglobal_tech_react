@@ -87,7 +87,7 @@ const presentations: Presentation[] = [
     subtitle: "OXYGLOBAL.TECH",
     title: "Corporate Presentation",
     description:
-      "Explore our business ecosystem, vision, and growth model across People, Platforms, Products, and caPital.",
+      "Explore our business ecosystem, vision, and growth model across People, Platforms, Products, and Capital.",
     points: [
       "Company overview and ecosystem",
       "Technology platforms and business model",
@@ -128,9 +128,9 @@ const presentations: Presentation[] = [
       "Responsible AI pipeline for full-stack application generation",
     ],
     driveLink:
-      "https://drive.google.com/file/d/1mHnuDGFMyGq_DEx3GV8n1abVl2YO5UAb/view?usp=sharing",
+      "https://drive.google.com/file/d/1PiAG9nKpgL2VPB7yuZT2AOSHrbCfdNQA/view?usp=sharing",
     embedLink:
-      "https://drive.google.com/file/d/1mHnuDGFMyGq_DEx3GV8n1abVl2YO5UAb/preview",
+      "https://drive.google.com/file/d/1PiAG9nKpgL2VPB7yuZT2AOSHrbCfdNQA/preview",
     accent: "#059669",
   },
   {

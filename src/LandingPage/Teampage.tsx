@@ -2,14 +2,14 @@ import React from "react";
 import { motion, type Variants } from "framer-motion";
 import { Linkedin } from "lucide-react";
 
-import Radha from "../assets/img/radha sir.png";
-import Rama from "../assets/img/rama mam.png";
-import Sneha from "../assets/img/sneha.png";
-import Subash from "../assets/img/subbu.png";
-import Chakri from "../assets/img/jags.png";
-import Srinivas from "../assets/img/yadavalli srinivas.png";
-import Ramesh from "../assets/img/ramesh.png";
-import Narendra from "../assets/img/narendra.png";
+import Radha from "../assets/img/radha.webp";
+import Rama from "../assets/img/rama.webp";
+import Sneha from "../assets/img/sneha.webp";
+import Subash from "../assets/img/subbu.webp";
+import Chakri from "../assets/img/jags.webp";
+import Srinivas from "../assets/img/yadavalli srinivas.webp";
+import Ramesh from "../assets/img/ramesh.webp";
+import Narendra from "../assets/img/narendra.webp";
 
 const teamMembers = [
   {
@@ -22,7 +22,7 @@ const teamMembers = [
     name: "Ramadevi.T",
     role: "Co-Founder & CTO",
     img: Rama,
-    linkedin: "https://www.linkedin.com/in/ramadevi-thatavarti/",
+    linkedin: "https://www.linkedin.com/in/ramadevi-thatavarti-969828284/",
   },
   {
     name: "Subhash.S",
@@ -141,13 +141,13 @@ const TeamPage: React.FC = () => {
             Meet Our Team
           </h2>
 
-          <h4 className="mt-2 font-poppins text-[26px] font-semibold leading-tight text-[#3A3A3A] sm:text-[38px] md:text-[48px] lg:text-[58px]">
+          <p className="mt-2 font-poppins text-[26px] font-semibold leading-tight text-[#3A3A3A] sm:text-[38px] md:text-[48px] lg:text-[58px]">
             Passionate. Proactive.{" "}
             <span className="relative inline-block text-[#36A35C]">
               Expert.
               <span className="underlineLoop absolute left-0 bottom-[-6px] h-[3px] w-full rounded-full bg-[#36A35C]" />
             </span>
-          </h4>
+          </p>
 
           <p className="mx-auto mt-6 max-w-3xl text-[14px] leading-7 text-[#4b5563] sm:text-[15px] md:text-[17px]">
             We lead with innovation, care, and a shared commitment to building
@@ -177,6 +177,8 @@ const TeamPage: React.FC = () => {
                   <motion.img
                     src={member.img}
                     alt={member.name}
+                    loading="lazy"
+                    decoding="async"
                     whileHover={{ scale: 1.06 }}
                     transition={{ duration: 0.35 }}
                     className="h-full w-full object-cover"
@@ -202,7 +204,7 @@ const TeamPage: React.FC = () => {
                 {member.name}
               </h3>
 
-              <p className="mt-2 text-[15px] font-medium text-[#64748b]">
+              <p className="mt-2 text-[15px] font-medium text-[#475569]">
                 {member.role}
               </p>
             </motion.div>
